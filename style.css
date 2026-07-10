@@ -1,0 +1,28 @@
+:root{
+  --max-width: 1100px;
+  --gap: 1.25rem;
+  --color-primary: white; /* replace with Canva hex */
+  --color-accent: #976f4e;
+  --bg: white;
+  --text: #2c3042;
+  --muted: #5b73a2;
+  --radius: 10px;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --fs-base: 16px;
+  
+}
+/*font*/
+@font-face {
+    font-family:"canva san";
+    src: url("assets/fonts/canva-sans-regular.otf") format("opentype");
+}
+/*complete UI look*/
+*{box-sizing:border-box}
+html{font-size:var(--fs-base);font-family:var(--font-sans);color:var(--text);-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);line-height:2;display:flex; flex-direction:column;flex-direction: column;align-items: center;position:relative;}
+.site-header{z-index: 9999 !important;background:var(--bg);padding: .5rem;position:sticky;top:0;z-index:50; width: 100%}
+.site-header .container {display: flex;align-items: center; /* This centers everything vertically */justify-content: space-between;padding: 0 20px;max-width: var(--max-width); margin: 0 auto;}
+.logo img{height:30px;width:30px;display:block; };
+.footer, .footer-space {height: 100px;}
+.site-footer{  width:100%;padding-bottom:.005%;background:var(--color-primary);color:var(--muted);text-align:center;margin-top: auto;}
+.main-container { top: 0;left:0;width: 100%;height: auto; padding: 0;display:flex;margin:0 ;justify-content: center;align-content: flexstart;}
