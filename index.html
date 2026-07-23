@@ -1,34 +1,306 @@
+
+
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>CS4398</title>
-
-  <link rel="icon" type="image/x-icon" href="/assets/svg/milo.svg">
-
-
+  <title>MyTrip — Budget Road Trip Planner</title>
+  <meta name="description" content="MyTrip is a web app that plans your road trip route, finds affordable hotels and gas along the way, and checks the total against your budget — all in one place." />
+ 
+  <link rel="icon" type="image/svg+xml" href="assets/svg/milo.svg">
+ 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+ 
   <link rel="stylesheet" href="style.css">
 </head>
-
-
+ 
 <body>
-    <header class="site-header"> 
-          <div class = "container">
-                <a class="logo" href="index.html"><img src="assets/svg/milo.svg" alt="Brand logo"></a>  
-    </header>
-    <main>
-        <div class="main-container" style="display:flex; justify-content:center; label { display: block; margin-top: 12px; } input, textarea { width: 100%; padding: 10px; margin-top: 5px; } ">
-    
-        <div>
-
-    </main>
-    <footer class="site-footer">
-        <p> <span id="year"></span> CS4398 — All Rights Reserved</p>
-    </footer>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="#top"><img src="assets/svg/milo.svg" alt="MyTrip logo"><span>MyTrip</span></a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#overview">Overview</a>
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#under-the-hood">Under the hood</a>
+        <a href="test.html">Test it out</a>
+      </nav>
     </div>
+  </header>
+ 
+  <main id="top">
+ 
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow">CS 4398 · Advanced Software Engineering — Team Project</p>
+        <h1>MyTrip</h1>
+        <p class="tagline">Budget Road Trip Planner</p>
+        <p class="lead">
+          Plan an entire road trip without twenty browser tabs. Set a route, find affordable
+          hotels and gas along the way, and watch the total stack up against your budget —
+          all in one place.
+        </p>
+        <a class="hero-cta" href="#how-it-works">See how a trip comes together ↓</a>
+ 
+        <div class="route-graphic" aria-hidden="true">
+          <svg viewBox="0 0 1000 170" preserveAspectRatio="xMidYMid meet">
+            <path class="route-track" d="M40,100 C120,40 200,40 280,60 C360,80 440,120 520,140 C600,160 680,100 760,60 C840,20 900,60 960,100" />
+            <path class="route-line" d="M40,100 C120,40 200,40 280,60 C360,80 440,120 520,140 C600,160 680,100 760,60 C840,20 900,60 960,100" />
+            <g class="waypoint" transform="translate(40,100)"><circle r="7"/></g>
+            <g class="waypoint" transform="translate(280,60)"><circle r="7"/></g>
+            <g class="waypoint" transform="translate(520,140)"><circle r="7"/></g>
+            <g class="waypoint" transform="translate(760,60)"><circle r="7"/></g>
+            <g class="waypoint" transform="translate(960,100)"><circle r="7"/></g>
+          </svg>
+          <div class="route-labels">
+            <span style="left:4%">Start</span>
+            <span style="left:28%">Hotels</span>
+            <span style="left:52%">Gas</span>
+            <span style="left:76%">Budget</span>
+            <span style="left:96%">Destination</span>
+          </div>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- OVERVIEW / PRODUCT PERSPECTIVE -->
+    <section class="perspective" id="overview">
+      <div class="container perspective-inner">
+        <div class="perspective-text">
+          <p class="section-label">Product overview</p>
+          <h2>One app. Not ten tabs.</h2>
+          <p>
+            Planning a budget road trip usually means one tab for the route, another for hotel
+            deals, another for gas prices, and a spreadsheet trying to hold it all together.
+            MyTrip centralizes trip planning, budget tracking, and travel information into a
+            single platform — built on an MVC architecture so it stays reliable as it grows.
+          </p>
+          <p>
+            It runs in any modern browser, needs no installation, and is aimed at everyday
+            travelers — not developers.
+          </p>
+        </div>
+        <div class="perspective-compare" role="img" aria-label="Comparison: many tabs versus one app">
+          <div class="compare-card compare-before">
+            <p class="compare-label">Without MyTrip</p>
+            <ul>
+              <li>Hotel site</li>
+              <li>Gas price app</li>
+              <li>Maps app</li>
+              <li>Budget spreadsheet</li>
+            </ul>
+          </div>
+          <div class="compare-arrow">→</div>
+          <div class="compare-card compare-after">
+            <p class="compare-label">With MyTrip</p>
+            <ul>
+              <li>Route, hotels, and gas — together</li>
+              <li>Budget tracked automatically</li>
+              <li>One trip, one screen</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- FEATURES -->
+    <section class="features" id="features">
+      <div class="container">
+        <p class="section-label">What it does</p>
+        <h2>Every leg of the trip</h2>
+        <p class="section-intro">MyTrip's functions follow the same order a trip actually comes together in.</p>
+ 
+        <div class="legs">
+          <div class="leg">
+            <p class="leg-index">Leg 1</p>
+            <h3>Map it</h3>
+            <ul class="leg-list">
+              <li>Create and manage a road trip</li>
+              <li>Enter a starting location and destination</li>
+              <li>Generate and view the route on a map</li>
+            </ul>
+          </div>
+          <div class="leg">
+            <p class="leg-index">Leg 2</p>
+            <h3>Budget it</h3>
+            <ul class="leg-list">
+              <li>Search for affordable hotels along the way</li>
+              <li>Locate nearby gas stations</li>
+              <li>Estimate fuel cost from trip distance</li>
+              <li>Calculate the total estimated trip cost</li>
+              <li>Compare the total against your budget</li>
+            </ul>
+          </div>
+          <div class="leg">
+            <p class="leg-index">Leg 3</p>
+            <h3>Keep it</h3>
+            <ul class="leg-list">
+              <li>Save a trip and come back to it later</li>
+              <li>Edit an existing trip plan</li>
+              <li>View a clear summary when it's done</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- AUDIENCE -->
+    <section class="audience" id="who-its-for">
+      <div class="container audience-inner">
+        <div>
+          <p class="section-label">Who it's for</p>
+          <h2>Built for travelers, not developers</h2>
+          <p>
+            MyTrip is meant for anyone planning a personal or family road trip. It only asks for
+            basic computer skills and a general sense of how road travel works — nothing
+            specialized, no training required.
+          </p>
+        </div>
+        <div class="audience-meta">
+          <div class="meta-block">
+            <p class="meta-label">Works on</p>
+            <p>Desktop · Laptop · Tablet</p>
+          </div>
+          <div class="meta-block">
+            <p class="meta-label">Runs in</p>
+            <p>Chrome · Edge · Firefox · Safari</p>
+          </div>
+          <div class="meta-block">
+            <p class="meta-label">Needs</p>
+            <p>A stable internet connection</p>
+          </div>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- HOW IT WORKS / USE CASES -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="container">
+        <p class="section-label">How it works</p>
+        <h2>How a trip comes together</h2>
+ 
+        <div class="trip-cards">
+          <article class="trip-card">
+            <p class="trip-actor">Traveler</p>
+            <h3>Plan a trip route</h3>
+            <p class="trip-condition"><span>Depart:</span> logged in, connected</p>
+            <ol class="trip-steps">
+              <li>Enter a start location, destination, and travel dates</li>
+              <li>Select "Find Route"</li>
+              <li>Review the route on a map, with suggested stops along the way</li>
+            </ol>
+            <p class="trip-condition"><span>Arrive:</span> route and stops shown on the map</p>
+            <p class="trip-detour">If the connection drops, an error page appears. If no route is found, MyTrip asks for revised locations.</p>
+          </article>
+ 
+          <article class="trip-card">
+            <p class="trip-actor">Traveler</p>
+            <h3>Calculate travel expenses</h3>
+            <p class="trip-condition"><span>Depart:</span> destination and budget set</p>
+            <ol class="trip-steps">
+              <li>Enter location, budget, and dates</li>
+              <li>MyTrip finds activities and lodging within budget</li>
+              <li>Select the activities and lodging you like</li>
+              <li>MyTrip totals the cost and suggests more options</li>
+            </ol>
+            <p class="trip-condition"><span>Arrive:</span> itemized activities and lodging within budget</p>
+            <p class="trip-detour">If too few in-budget results turn up, MyTrip may surface some that run slightly over.</p>
+          </article>
+ 
+          <article class="trip-card">
+            <p class="trip-actor">Admin</p>
+            <h3>Manage users</h3>
+            <p class="trip-condition"><span>Depart:</span> admin logged in</p>
+            <ol class="trip-steps">
+              <li>View the list of registered travelers and vendors</li>
+              <li>Review each account</li>
+              <li>Approve, edit, suspend, or remove as needed</li>
+            </ol>
+            <p class="trip-condition"><span>Arrive:</span> account list updated</p>
+            <p class="trip-detour">If no users are registered yet, an empty-state page appears instead.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- NON-FUNCTIONAL REQUIREMENTS -->
+    <section class="dashboard" id="under-the-hood">
+      <div class="container">
+        <p class="section-label">Under the hood</p>
+        <h2>Built to stay dependable</h2>
+ 
+        <div class="stat-grid">
+          <div class="stat-card">
+            <p class="stat-value">24/7</p>
+            <p class="stat-label">Availability</p>
+            <p class="stat-detail">Live route, distance, and points-of-interest data whenever there's a connection.</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-value">&lt;5s</p>
+            <p class="stat-label">Login / logout</p>
+            <p class="stat-detail">Sign-in stays fast, every time.</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-value">&lt;10s</p>
+            <p class="stat-label">Route generation</p>
+            <p class="stat-detail">Under normal network conditions.</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-value">1,000</p>
+            <p class="stat-label">Simultaneous users</p>
+            <p class="stat-detail">Supported without a drop in performance.</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-value">Hashed</p>
+            <p class="stat-label">Passwords</p>
+            <p class="stat-detail">Stored with a secure hashing algorithm — never in plain text.</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-value">Clear</p>
+            <p class="stat-label">Errors</p>
+            <p class="stat-detail">A lost connection or unavailable API shows a clear message — never a silent failure.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- BUILT WITH -->
+    <section class="stack">
+      <div class="container">
+        <p class="section-label">Built with</p>
+        <ul class="badge-row">
+          <li>Java</li>
+          <li>MVC Architecture</li>
+          <li>Git &amp; GitHub</li>
+          <li>JUnit</li>
+          <li>Javadoc</li>
+          <li>Visual Paradigm UML</li>
+        </ul>
+      </div>
+    </section>
+ 
+  </main>
+ 
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-team">Mustafa Al Azzawi · Angelica Alvarado · William Parker</p>
+      <p class="footer-course"><span id="year"></span> CS4398 — All Rights Reserved</p>
+    </div>
+  </footer>
+ 
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+ 
+
+
+
+
+
