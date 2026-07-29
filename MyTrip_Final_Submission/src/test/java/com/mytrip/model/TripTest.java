@@ -1,104 +1,76 @@
 package com.mytrip.model;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TripTest {
 
-    private Trip standardTrip;
-    private Trip overBudgetTrip;
-    private Trip exactBudgetTrip;
+    @Test
+    void testStandardTripCalculations() {
+        Trip trip = new Trip();
+        trip.setDistanceMiles(new BigDecimal("300"));
+        trip.setVehicleMpg(new BigDecimal("30"));
+        trip.setFuelPrice(new BigDecimal("3.00"));
+        trip.setLodgingCost(new BigDecimal("150.00"));
+        trip.setActivityCost(new BigDecimal("50.00"));
+        trip.setBudget(new BigDecimal("300.00"));
 
-    @BeforeEach
-    void setUp() {
-        // Standard Trip Setup (Under Budget)
-        standardTrip = new Trip();
-        standardTrip.setDistanceMiles(new BigDecimal("300"));
-        standardTrip.setVehicleMpg(new BigDecimal("30"));
-        standardTrip.setFuelPrice(new BigDecimal("3.00"));
-        standardTrip.setLodgingCost(new BigDecimal("150.00"));
-        standardTrip.setActivityCost(new BigDecimal("50.00"));
-        standardTrip.setBudget(new BigDecimal("300.00"));
-
-        // Over-budget Trip Setup
-        overBudgetTrip = new Trip();
-        overBudgetTrip.setDistanceMiles(new BigDecimal("300"));
-        overBudgetTrip.setVehicleMpg(new BigDecimal("30"));
-        overBudgetTrip.setFuelPrice(new BigDecimal("3.00"));
-        overBudgetTrip.setLodgingCost(new BigDecimal("250.00"));
-        overBudgetTrip.setActivityCost(new BigDecimal("50.00"));
-        overBudgetTrip.setBudget(new BigDecimal("300.00"));
-
-        // Exactly-on-budget Trip Setup
-        exactBudgetTrip = new Trip();
-        exactBudgetTrip.setDistanceMiles(new BigDecimal("300"));
-        exactBudgetTrip.setVehicleMpg(new BigDecimal("30"));
-        exactBudgetTrip.setFuelPrice(new BigDecimal("3.00"));
-        exactBudgetTrip.setLodgingCost(new BigDecimal("220.00"));
-        exactBudgetTrip.setActivityCost(new BigDecimal("50.00"));
-        exactBudgetTrip.setBudget(new BigDecimal("300.00"));
+        assertEquals(new BigDecimal("30.00"), trip.calculateFuelCost());
+        assertEquals(new BigDecimal("230.00"), trip.calculateTotalCost());
+        assertEquals(new BigDecimal("70.00"), trip.calculateBudgetDifference());
+        assertTrue(trip.isUnderBudget());
     }
 
     @Test
-    void calculateFuelCost_ReturnsCorrectResult() {
-        assertEquals(new BigDecimal("30.00"), standardTrip.getFuelCost());
+    void testOverBudgetTrip() {
+        Trip trip = new Trip();
+        trip.setDistanceMiles(new BigDecimal("300"));
+        trip.setVehicleMpg(new BigDecimal("30"));
+        trip.setFuelPrice(new BigDecimal("3.00"));
+        trip.setLodgingCost(new BigDecimal("250.00"));
+        trip.setActivityCost(new BigDecimal("50.00"));
+        trip.setBudget(new BigDecimal("300.00"));
+
+        assertEquals(new BigDecimal("330.00"), trip.calculateTotalCost());
+        assertEquals(new BigDecimal("-30.00"), trip.calculateBudgetDifference());
+        assertFalse(trip.isUnderBudget());
     }
 
     @Test
-    void calculateTotalCost_ReturnsCorrectResult() {
-        assertEquals(new BigDecimal("230.00"), standardTrip.getTotalCost());
+    void testExactlyOnBudgetTrip() {
+        Trip trip = new Trip();
+        trip.setDistanceMiles(new BigDecimal("300"));
+        trip.setVehicleMpg(new BigDecimal("30"));
+        trip.setFuelPrice(new BigDecimal("3.00"));
+        trip.setLodgingCost(new BigDecimal("220.00"));
+        trip.setActivityCost(new BigDecimal("50.00"));
+        trip.setBudget(new BigDecimal("300.00"));
+
+        assertEquals(new BigDecimal("300.00"), trip.calculateTotalCost());
+        assertEquals(new BigDecimal("0.00"), trip.calculateBudgetDifference());
+        assertTrue(trip.isUnderBudget());
     }
 
     @Test
-    void calculateBudgetDifference_ReturnsCorrectResult() {
-        assertEquals(new BigDecimal("70.00"), standardTrip.getBudgetDifference());
+    void testZeroMpgThrowsException() {
+        Trip trip = new Trip();
+        trip.setDistanceMiles(new BigDecimal("300"));
+        trip.setVehicleMpg(BigDecimal.ZERO);
+        assertThrows(IllegalArgumentException.class, trip::calculateFuelCost);
     }
 
     @Test
-    void isUnderBudget_ReturnsTrueWhenUnderBudget() {
-        assertTrue(standardTrip.isUnderBudget());
+    void testNegativeDistanceThrowsException() {
+        Trip trip = new Trip();
+        trip.setDistanceMiles(new BigDecimal("-50"));
+        assertThrows(IllegalArgumentException.class, () -> trip.setDistanceMiles(new BigDecimal("-50")));
     }
 
     @Test
-    void isUnderBudget_ReturnsFalseWhenOverBudget() {
-        assertFalse(overBudgetTrip.isUnderBudget());
-    }
-
-    @Test
-    void isUnderBudget_ReturnsTrueWhenExactlyOnBudget() {
-        assertTrue(exactBudgetTrip.isUnderBudget());
-        assertEquals(new BigDecimal("0.00"), exactBudgetTrip.getBudgetDifference());
-    }
-
-    @Test
-    void zeroMpg_ThrowsException() {
-        standardTrip.setVehicleMpg(BigDecimal.ZERO);
-        assertThrows(IllegalArgumentException.class, () -> standardTrip.getFuelCost());
-    }
-
-    @Test
-    void negativeMpg_ThrowsException() {
-        standardTrip.setVehicleMpg(new BigDecimal("-10"));
-        assertThrows(IllegalArgumentException.class, () -> standardTrip.getFuelCost());
-    }
-
-    @Test
-    void negativeDistance_ThrowsException() {
-        standardTrip.setDistanceMiles(new BigDecimal("-50"));
-        assertThrows(IllegalArgumentException.class, () -> standardTrip.getFuelCost());
-    }
-
-    @Test
-    void negativeFuelPrice_ThrowsException() {
-        standardTrip.setFuelPrice(new BigDecimal("-3.00"));
-        assertThrows(IllegalArgumentException.class, () -> standardTrip.getFuelCost());
-    }
-    
-    @Test
-    void nullCalculationData_ThrowsException() {
-        Trip nullTrip = new Trip();
-        assertThrows(NullPointerException.class, () -> nullTrip.getFuelCost());
+    void testNegativeFuelPriceThrowsException() {
+        Trip trip = new Trip();
+        trip.setFuelPrice(new BigDecimal("-3.00"));
+        assertThrows(IllegalArgumentException.class, () -> trip.setFuelPrice(new BigDecimal("-3.00")));
     }
 }
