@@ -197,6 +197,20 @@
 
         // Navigation Controller
         function switchTab(viewId) {
+            const vendorViewId = "vendorView";
+            if (
+                viewId === vendorViewId &&
+                (
+                    !currentUser.isLoggedIn ||
+                    currentUser.role !== "vendor"
+                )
+            ) {
+                showAlert(
+                    "You must be logged in as a vendor to access the Vendor Portal."
+                );
+                return;
+            }
+
             document.querySelectorAll('.view-page').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.desktop-nav-btn').forEach(el => el.classList.remove('active'));
@@ -451,6 +465,27 @@
             const nameSpan = document.getElementById('headerUserName');
             const guestState = document.getElementById('profileGuestState');
             const loggedInState = document.getElementById('profileLoggedInState');
+            const vendorPortalNav =
+                document.getElementById("vendorPortalNav");
+
+            const vendorPortalCard =
+                document.getElementById("vendorPortalCard");
+
+            const normalizedRole = String(
+                currentUser.role
+                || currentUser.accountType
+                || currentUser.userType
+                || ""
+            ).trim().toLowerCase();
+
+            const isVendor =
+                currentUser.isLoggedIn === true
+                && normalizedRole === "vendor";
+
+            if (vendorPortalCard) {
+                vendorPortalCard.style.display =
+                    isVendor ? "" : "none";
+            }
 
             if (currentUser.isLoggedIn) {
                 nameSpan.textContent = currentUser.name.split(' ')[0];
@@ -1215,11 +1250,6 @@
                 }
                 : null;
 
-            if (distanceInput) {
-                distanceInput.value =
-                    trip.distanceMiles;
-            }
-
             const activityCost =
                 Number(trip.activityCost || 0);
 
@@ -1245,6 +1275,14 @@
 
             const budgetInput =
                 document.getElementById('planBudget');
+
+            const distanceInput =
+                document.getElementById("routeDistanceInput");
+
+            if (distanceInput) {
+                distanceInput.value =
+                    trip.distanceMiles;
+            }
 
             if (startInput) {
                 startInput.value = trip.startLocation;
@@ -1285,7 +1323,7 @@
              * Use the exact ID already used by your Plan Route tab.
              * In this example it is planView.
              */
-            switchTab('planView');
+            switchTab('resultsView');
         }
 
         /**
@@ -1403,6 +1441,25 @@
 
         function addVendorListing(e) {
             e.preventDefault();
+
+            const normalizedRole = String(
+                currentUser.role
+                || currentUser.accountType
+                || currentUser.userType
+                || ""
+            ).trim().toLowerCase();
+
+            const isVendor =
+                currentUser.isLoggedIn === true
+                && normalizedRole === "vendor";
+
+            if (!isVendor) {
+                showAlert(
+                    "You must be logged in as a vendor to submit a listing."
+                );
+                return;
+            }
+
             const name = document.getElementById('vendorName').value;
             const type = document.getElementById('vendorType').value;
             const price = parseFloat(document.getElementById('vendorPrice').value);
