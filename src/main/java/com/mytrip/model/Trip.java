@@ -253,6 +253,15 @@ public class Trip {
     }
 
     public void setDistanceMiles(BigDecimal distanceMiles) {
+        if (
+                distanceMiles != null
+                        && distanceMiles.compareTo(BigDecimal.ZERO) < 0
+        ) {
+            throw new IllegalArgumentException(
+                    "Distance cannot be negative."
+            );
+        }
+
         this.distanceMiles = distanceMiles;
     }
 
@@ -261,6 +270,15 @@ public class Trip {
     }
 
     public void setVehicleMpg(BigDecimal vehicleMpg) {
+        if (
+                vehicleMpg != null
+                        && vehicleMpg.compareTo(BigDecimal.ZERO) <= 0
+        ) {
+            throw new IllegalArgumentException(
+                    "Vehicle MPG must be greater than zero."
+            );
+        }
+
         this.vehicleMpg = vehicleMpg;
     }
 
@@ -269,6 +287,15 @@ public class Trip {
     }
 
     public void setFuelPrice(BigDecimal fuelPrice) {
+        if (
+                fuelPrice != null
+                        && fuelPrice.compareTo(BigDecimal.ZERO) < 0
+        ) {
+            throw new IllegalArgumentException(
+                    "Fuel price cannot be negative."
+            );
+        }
+
         this.fuelPrice = fuelPrice;
     }
 

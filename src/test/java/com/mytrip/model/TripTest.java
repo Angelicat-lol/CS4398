@@ -55,22 +55,34 @@ class TripTest {
     @Test
     void testZeroMpgThrowsException() {
         Trip trip = new Trip();
-        trip.setDistanceMiles(new BigDecimal("300"));
-        trip.setVehicleMpg(BigDecimal.ZERO);
-        assertThrows(IllegalArgumentException.class, trip::calculateFuelCost);
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> trip.setVehicleMpg(BigDecimal.ZERO)
+        );
     }
 
     @Test
     void testNegativeDistanceThrowsException() {
         Trip trip = new Trip();
-        trip.setDistanceMiles(new BigDecimal("-50"));
-        assertThrows(IllegalArgumentException.class, () -> trip.setDistanceMiles(new BigDecimal("-50")));
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> trip.setDistanceMiles(
+                        new BigDecimal("-50")
+                )
+        );
     }
 
     @Test
     void testNegativeFuelPriceThrowsException() {
         Trip trip = new Trip();
-        trip.setFuelPrice(new BigDecimal("-3.00"));
-        assertThrows(IllegalArgumentException.class, () -> trip.setFuelPrice(new BigDecimal("-3.00")));
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> trip.setFuelPrice(
+                        new BigDecimal("-3.00")
+                )
+        );
     }
 }

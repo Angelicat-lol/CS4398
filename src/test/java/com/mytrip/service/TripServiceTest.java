@@ -11,6 +11,7 @@ import org.mockito.MockitoAnnotations;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.math.BigDecimal;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -28,11 +29,33 @@ class TripServiceTest {
         MockitoAnnotations.openMocks(this);
     }
 
+    private Trip createValidTrip() {
+        Trip trip = new Trip();
+
+        trip.setTripName("Dallas Weekend");
+        trip.setOwnerEmail("traveler@mytrip.com");
+        trip.setStartLocation("San Marcos, TX");
+        trip.setDestination("Dallas, TX");
+        trip.setDistanceMiles(new BigDecimal("225"));
+        trip.setVehicleMpg(new BigDecimal("30"));
+        trip.setFuelPrice(new BigDecimal("3.20"));
+        trip.setBudget(new BigDecimal("500"));
+        trip.setLodgingCost(new BigDecimal("150"));
+        trip.setActivityCost(new BigDecimal("50"));
+
+        return trip;
+    }
+
     @Test
     void createTripCallsRepositorySave() {
-        Trip trip = new Trip();
-        when(repository.save(any(Trip.class))).thenReturn(trip);
-        service.createTrip(trip);
+        Trip trip = createValidTrip();
+
+        when(repository.save(any(Trip.class)))
+                .thenReturn(trip);
+
+        Trip result = service.createTrip(trip);
+
+        assertSame(trip, result);
         verify(repository, times(1)).save(trip);
     }
 
@@ -60,25 +83,41 @@ class TripServiceTest {
     @Test
     void getTripsForOwnerUsesOwnerEmailQuery() {
         String email = "traveler@example.com";
-        when(repository.findByOwnerEmail(email)).thenReturn(Arrays.asList(new Trip()));
-        List<Trip> result = service.getTripsForOwner(email);
+
+        when(
+                repository.findByOwnerEmailIgnoreCaseOrderByIdDesc(email)
+        ).thenReturn(Arrays.asList(new Trip()));
+
+        List<Trip> result =
+                service.getTripsForOwner(email);
+
         assertEquals(1, result.size());
-        verify(repository, times(1)).findByOwnerEmail(email);
+
+        verify(repository, times(1))
+                .findByOwnerEmailIgnoreCaseOrderByIdDesc(email);
     }
 
     @Test
     void updateTripChangesValuesAndCallsSave() {
-        Trip existingTrip = new Trip();
+        Trip existingTrip = createValidTrip();
         existingTrip.setId(1L);
-        Trip updatedTrip = new Trip();
+
+        Trip updatedTrip = createValidTrip();
         updatedTrip.setTripName("New Name");
 
-        when(repository.findById(1L)).thenReturn(Optional.of(existingTrip));
-        when(repository.save(any(Trip.class))).thenReturn(existingTrip);
+        when(repository.findById(1L))
+                .thenReturn(Optional.of(existingTrip));
+
+        when(repository.save(any(Trip.class)))
+                .thenReturn(existingTrip);
 
         Trip result = service.updateTrip(1L, updatedTrip);
+
         assertEquals(1L, result.getId());
-        verify(repository, times(1)).save(existingTrip);
+        assertEquals("New Name", result.getTripName());
+
+        verify(repository, times(1))
+                .save(existingTrip);
     }
 
     @Test
