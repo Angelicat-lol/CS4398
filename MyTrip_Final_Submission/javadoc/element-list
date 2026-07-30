@@ -1,0 +1,6 @@
+com.mytrip
+com.mytrip.controller
+com.mytrip.exception
+com.mytrip.model
+com.mytrip.repository
+com.mytrip.service

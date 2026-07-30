@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.mytrip"},{"l":"com.mytrip.controller"},{"l":"com.mytrip.exception"},{"l":"com.mytrip.model"},{"l":"com.mytrip.repository"},{"l":"com.mytrip.service"}];updateSearchResults();
