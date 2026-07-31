@@ -50,7 +50,7 @@ public class Trip {
 
     /** Total driving distance in miles. */
     @NotNull(message = "Distance is required.")
-    @PositiveOrZero(message = "Distance cannot be negative.")
+    @Positive(message = "Distance must be greater than zero.")
     private BigDecimal distanceMiles;
 
     /** Vehicle fuel efficiency in miles per gallon. */
@@ -65,7 +65,7 @@ public class Trip {
 
     /** Maximum amount the traveler wants to spend. */
     @NotNull(message = "Budget is required.")
-    @PositiveOrZero(message = "Budget cannot be negative.")
+    @Positive(message = "Budget must be greater than zero.")
     private BigDecimal budget;
 
     /** Estimated lodging expenses. */
@@ -177,9 +177,9 @@ public class Trip {
     }
 
     private void validateCalculationData() {
-        if (distanceMiles == null || distanceMiles.signum() < 0) {
+        if (distanceMiles == null || distanceMiles.signum() <= 0) {
             throw new IllegalStateException(
-                    "Distance must be zero or greater."
+                    "Distance must be greater than zero."
             );
         }
 
@@ -255,10 +255,10 @@ public class Trip {
     public void setDistanceMiles(BigDecimal distanceMiles) {
         if (
                 distanceMiles != null
-                        && distanceMiles.compareTo(BigDecimal.ZERO) < 0
+                        && distanceMiles.compareTo(BigDecimal.ZERO) <= 0
         ) {
             throw new IllegalArgumentException(
-                    "Distance cannot be negative."
+                    "Distance must be greater than zero."
             );
         }
 
@@ -304,6 +304,15 @@ public class Trip {
     }
 
     public void setBudget(BigDecimal budget) {
+        if (
+                budget != null
+                        && budget.compareTo(BigDecimal.ZERO) <= 0
+        ) {
+            throw new IllegalArgumentException(
+                    "Budget must be greater than zero."
+            );
+        }
+
         this.budget = budget;
     }
 
@@ -312,6 +321,15 @@ public class Trip {
     }
 
     public void setLodgingCost(BigDecimal lodgingCost) {
+        if (
+                lodgingCost != null
+                        && lodgingCost.compareTo(BigDecimal.ZERO) < 0
+        ) {
+            throw new IllegalArgumentException(
+                    "Lodging cost cannot be negative."
+            );
+        }
+
         this.lodgingCost = lodgingCost;
     }
 
@@ -320,6 +338,15 @@ public class Trip {
     }
 
     public void setActivityCost(BigDecimal activityCost) {
+        if (
+                activityCost != null
+                        && activityCost.compareTo(BigDecimal.ZERO) < 0
+        ) {
+            throw new IllegalArgumentException(
+                    "Activity cost cannot be negative."
+            );
+        }
+
         this.activityCost = activityCost;
     }
 

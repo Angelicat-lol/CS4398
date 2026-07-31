@@ -63,6 +63,16 @@ class TripTest {
     }
 
     @Test
+    void testZeroDistanceThrowsException() {
+        Trip trip = new Trip();
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> trip.setDistanceMiles(BigDecimal.ZERO)
+        );
+    }
+
+    @Test
     void testNegativeDistanceThrowsException() {
         Trip trip = new Trip();
 
@@ -75,6 +85,16 @@ class TripTest {
     }
 
     @Test
+    void testZeroBudgetThrowsException() {
+        Trip trip = new Trip();
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> trip.setBudget(BigDecimal.ZERO)
+        );
+    }
+
+    @Test
     void testNegativeFuelPriceThrowsException() {
         Trip trip = new Trip();
 
@@ -82,6 +102,42 @@ class TripTest {
                 IllegalArgumentException.class,
                 () -> trip.setFuelPrice(
                         new BigDecimal("-3.00")
+                )
+        );
+    }
+
+    @Test
+    void testNegativeBudgetThrowsException() {
+        Trip trip = new Trip();
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> trip.setBudget(
+                        new BigDecimal("-10.00")
+                )
+        );
+    }
+
+    @Test
+    void testNegativeLodgingCostThrowsException() {
+        Trip trip = new Trip();
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> trip.setLodgingCost(
+                        new BigDecimal("-15.00")
+                )
+        );
+    }
+
+    @Test
+    void testNegativeActivityCostThrowsException() {
+        Trip trip = new Trip();
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> trip.setActivityCost(
+                        new BigDecimal("-20.00")
                 )
         );
     }
