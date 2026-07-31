@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980" role="img" aria-labelledby="title desc">
+  <title id="title">MyTrip System Structure Diagram</title>
+  <desc id="desc">Layered system structure diagram for the MyTrip application showing the presentation, application, data, and external service layers.</desc>
+  <defs>
+    <style>
+      .title { font: 700 20px Arial, sans-serif; letter-spacing: 0.8px; }
+      .section-title { font: 700 17px Arial, sans-serif; }
+      .heading { font: 700 16px Arial, sans-serif; }
+      .subheading { font: 700 14px Arial, sans-serif; }
+      .body { font: 400 13px Arial, sans-serif; fill: #1f2937; }
+      .small { font: 400 12px Arial, sans-serif; fill: #374151; }
+      .tiny { font: 400 11px Arial, sans-serif; fill: #4b5563; }
+      .bullet { font: 400 14px Arial, sans-serif; fill: #1f2937; }
+      .panel { fill: #ffffff; stroke-width: 2.2; }
+      .inner { fill: #fbfdff; stroke-width: 1.8; }
+      .note-box { fill: #ffffff; stroke: #94a3b8; stroke-width: 1.8; }
+      .legend-line { stroke: #111827; stroke-width: 2.4; fill: none; }
+      .arrow { stroke: #111827; stroke-width: 2.6; fill: none; marker-end: url(#arrow); }
+      .arrow-both-start { marker-start: url(#arrow-start); }
+      .dashed-arrow { stroke: #374151; stroke-width: 2.4; fill: none; stroke-dasharray: 8 8; marker-end: url(#arrow-dashed); }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#111827"/>
+    </marker>
+    <marker id="arrow-start" markerWidth="12" markerHeight="12" refX="2" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M 12 0 L 0 6 L 12 12 z" fill="#111827"/>
+    </marker>
+    <marker id="arrow-dashed" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#374151"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#cbd5e1" flood-opacity="0.55"/>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="980" fill="#ffffff"/>
+
+  <rect class="panel" x="30" y="20" rx="18" ry="18" width="340" height="720" stroke="#2563eb" filter="url(#shadow)"/>
+  <line x1="30" y1="84" x2="370" y2="84" stroke="#2563eb" stroke-width="1.8"/>
+  <text x="200" y="58" text-anchor="middle" fill="#2563eb" class="title">PRESENTATION LAYER</text>
+
+  <rect class="panel" x="405" y="20" rx="18" ry="18" width="430" height="720" stroke="#65a30d" filter="url(#shadow)"/>
+  <line x1="405" y1="84" x2="835" y2="84" stroke="#65a30d" stroke-width="1.8"/>
+  <text x="620" y="58" text-anchor="middle" fill="#3f6212" class="title">APPLICATION LAYER</text>
+
+  <rect class="panel" x="870" y="20" rx="18" ry="18" width="300" height="720" stroke="#8b5cf6" filter="url(#shadow)"/>
+  <line x1="870" y1="84" x2="1170" y2="84" stroke="#8b5cf6" stroke-width="1.8"/>
+  <text x="1020" y="58" text-anchor="middle" fill="#7c3aed" class="title">DATA LAYER</text>
+
+  <rect class="panel" x="1205" y="20" rx="18" ry="18" width="330" height="720" stroke="#f97316" filter="url(#shadow)"/>
+  <line x1="1205" y1="84" x2="1535" y2="84" stroke="#f97316" stroke-width="1.8"/>
+  <text x="1370" y="58" text-anchor="middle" fill="#ea580c" class="title">EXTERNAL SERVICE</text>
+
+  <rect x="55" y="130" rx="16" ry="16" width="290" height="260" fill="#f8fbff" stroke="#1d4ed8" stroke-width="2.2"/>
+  <rect x="98" y="160" rx="12" ry="12" width="120" height="88" fill="#ffffff" stroke="#1e3a8a" stroke-width="2"/>
+  <circle cx="158" cy="204" r="22" fill="none" stroke="#3b82f6" stroke-width="2.4"/>
+  <path d="M136 204 H180 M158 182 C149 191 149 217 158 226 M158 182 C167 191 167 217 158 226" fill="none" stroke="#3b82f6" stroke-width="2"/>
+  <circle cx="118" cy="178" r="4" fill="#334155"/>
+  <circle cx="132" cy="178" r="4" fill="#334155"/>
+  <circle cx="146" cy="178" r="4" fill="#334155"/>
+  <text x="200" y="286" text-anchor="middle" fill="#1e3a8a" class="section-title">Web Browser</text>
+  <text x="200" y="314" text-anchor="middle" fill="#1f2937" class="heading">HTML</text>
+  <text x="200" y="340" text-anchor="middle" fill="#1f2937" class="heading">CSS</text>
+  <text x="200" y="366" text-anchor="middle" fill="#1f2937" class="heading">JavaScript</text>
+
+  <line x1="90" y1="430" x2="310" y2="430" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="90" y="462" fill="#1f2937" class="subheading">Pages</text>
+  <text x="108" y="490" class="bullet">• Home</text>
+  <text x="108" y="515" class="bullet">• Plan Route</text>
+  <text x="108" y="540" class="bullet">• Route Options</text>
+  <text x="108" y="565" class="bullet">• Summary</text>
+  <text x="108" y="590" class="bullet">• Account</text>
+  <text x="108" y="615" class="bullet">• Admin Portal</text>
+
+  <rect x="75" y="648" rx="14" ry="14" width="250" height="70" fill="#ffffff" stroke="#93c5fd" stroke-width="1.8" stroke-dasharray="7 6"/>
+  <text x="200" y="674" text-anchor="middle" fill="#334155" class="small">User interacts with route planning,</text>
+  <text x="200" y="694" text-anchor="middle" fill="#334155" class="small">cost summary, account, and admin views.</text>
+
+  <g transform="translate(585,116)">
+    <circle cx="35" cy="26" r="29" fill="#65a30d" opacity="0.9"/>
+    <path d="M35 7 V29 M23 19 C23 12 28 7 35 7 C42 7 47 12 47 19 C47 26 42 31 35 31 C28 31 23 26 23 19" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <text x="620" y="180" text-anchor="middle" fill="#3f6212" class="section-title">Spring Boot Backend</text>
+
+  <rect class="inner" x="470" y="210" rx="14" ry="14" width="255" height="115" stroke="#65a30d"/>
+  <text x="598" y="242" text-anchor="middle" fill="#3f6212" class="heading">TripController</text>
+  <text x="598" y="266" text-anchor="middle" class="body">HTTP requests and responses</text>
+  <text x="598" y="288" text-anchor="middle" class="body">REST entry point for trip endpoints</text>
+
+  <rect class="inner" x="470" y="355" rx="14" ry="14" width="255" height="150" stroke="#65a30d"/>
+  <text x="598" y="387" text-anchor="middle" fill="#3f6212" class="heading">TripService</text>
+  <text x="598" y="411" text-anchor="middle" class="body">Business logic and validation</text>
+  <text x="598" y="433" text-anchor="middle" class="body">Trip calculations and drive-time rules</text>
+  <text x="598" y="455" text-anchor="middle" class="body">Create, read, update, and delete trips</text>
+
+  <rect class="inner" x="470" y="535" rx="14" ry="14" width="255" height="110" stroke="#65a30d"/>
+  <text x="598" y="567" text-anchor="middle" fill="#3f6212" class="heading">TripRepository</text>
+  <text x="598" y="591" text-anchor="middle" class="body">Spring Data JPA persistence</text>
+  <text x="598" y="613" text-anchor="middle" class="body">Owner-email filtered trip queries</text>
+
+  <rect x="738" y="385" rx="14" ry="14" width="70" height="122" fill="#fcfff5" stroke="#84cc16" stroke-width="1.8" stroke-dasharray="7 6"/>
+  <text x="773" y="412" text-anchor="middle" fill="#3f6212" class="subheading">TripNotFound</text>
+  <text x="773" y="430" text-anchor="middle" fill="#3f6212" class="subheading">Exception</text>
+  <text x="773" y="458" text-anchor="middle" class="tiny">Missing-trip</text>
+  <text x="773" y="475" text-anchor="middle" class="tiny">handling</text>
+
+  <rect x="930" y="170" rx="16" ry="16" width="180" height="118" fill="#fbf8ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="1020" y="214" text-anchor="middle" fill="#7c3aed" class="section-title">H2 Database</text>
+  <text x="1020" y="238" text-anchor="middle" fill="#7c3aed" class="section-title">(File-Based)</text>
+  <ellipse cx="1020" cy="258" rx="38" ry="12" fill="#8b5cf6" opacity="0.85"/>
+  <rect x="982" y="258" width="76" height="34" fill="#8b5cf6" opacity="0.85"/>
+  <ellipse cx="1020" cy="292" rx="38" ry="12" fill="#7c3aed" opacity="0.95"/>
+
+  <rect x="910" y="335" rx="16" ry="16" width="220" height="240" fill="#ffffff" stroke="#a78bfa" stroke-width="2"/>
+  <text x="1020" y="372" text-anchor="middle" fill="#7c3aed" class="section-title">TRIPS Table</text>
+  <rect x="962" y="392" width="116" height="82" fill="#faf5ff" stroke="#a78bfa" stroke-width="1.5"/>
+  <line x1="962" y1="419" x2="1078" y2="419" stroke="#a78bfa" stroke-width="1.2"/>
+  <line x1="962" y1="446" x2="1078" y2="446" stroke="#a78bfa" stroke-width="1.2"/>
+  <line x1="991" y1="392" x2="991" y2="474" stroke="#a78bfa" stroke-width="1.2"/>
+  <line x1="1020" y1="392" x2="1020" y2="474" stroke="#a78bfa" stroke-width="1.2"/>
+  <line x1="1049" y1="392" x2="1049" y2="474" stroke="#a78bfa" stroke-width="1.2"/>
+  <text x="938" y="506" class="bullet">• traveler email</text>
+  <text x="938" y="530" class="bullet">• trip name and route details</text>
+  <text x="938" y="554" class="bullet">• distance</text>
+  <text x="938" y="578" class="bullet">• vehicle MPG</text>
+  <text x="938" y="602" class="bullet">• fuel price</text>
+  <text x="938" y="626" class="bullet">• budget</text>
+  <text x="938" y="650" class="bullet">• lodging cost</text>
+  <text x="938" y="674" class="bullet">• activity cost</text>
+
+  <g transform="translate(1323,155)">
+    <path d="M40 12 C23 12 9 25 9 43 C9 69 40 97 40 97 C40 97 71 69 71 43 C71 25 57 12 40 12 Z" fill="none" stroke="#ea580c" stroke-width="5"/>
+    <circle cx="40" cy="43" r="11" fill="none" stroke="#ea580c" stroke-width="4"/>
+    <path d="M-4 125 L27 96 L46 112 L82 77" fill="none" stroke="#ea580c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M82 77 L103 124" fill="none" stroke="#ea580c" stroke-width="4" stroke-linecap="round"/>
+    <path d="M-4 125 L103 124" fill="none" stroke="#fb923c" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <text x="1370" y="310" text-anchor="middle" fill="#ea580c" class="section-title">Google Maps</text>
+  <text x="1370" y="336" text-anchor="middle" fill="#ea580c" class="section-title">Visual Route Display</text>
+  <line x1="1260" y1="372" x2="1480" y2="372" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="1280" y="406" class="bullet">• map tiles and directions view</text>
+  <text x="1280" y="432" class="bullet">• route mileage entered manually</text>
+  <text x="1280" y="458" class="bullet">• mileage is not retrieved from Google Maps</text>
+
+  <path class="arrow" d="M345 248 H470"/>
+  <text x="407" y="232" text-anchor="middle" class="small">HTTP REST requests</text>
+
+  <path class="arrow" d="M600 325 V355"/>
+  <text x="622" y="345" class="small">Delegates operations</text>
+
+  <path class="arrow" d="M600 505 V535"/>
+  <text x="622" y="525" class="small">Persistence operations</text>
+
+  <path class="dashed-arrow" d="M725 405 C742 405 748 418 756 430"/>
+
+  <path class="arrow arrow-both-start" d="M725 590 H930"/>
+  <text x="828" y="574" text-anchor="middle" class="small">CRUD and persistence</text>
+
+  <path class="dashed-arrow" d="M1290 760 C1130 760 920 760 790 760 C530 760 310 760 200 760 L200 720"/>
+  <text x="795" y="742" text-anchor="middle" class="small">Visual route display</text>
+
+  <path class="arrow" d="M470 278 H345" marker-end="url(#arrow-start)"/>
+  <text x="407" y="294" text-anchor="middle" class="small">HTTP responses</text>
+
+  <rect class="note-box" x="35" y="790" rx="14" ry="14" width="320" height="150" filter="url(#shadow)"/>
+  <text x="65" y="825" fill="#111827" class="section-title">LEGEND</text>
+  <line class="legend-line" x1="65" y1="858" x2="145" y2="858" marker-end="url(#arrow)"/>
+  <text x="165" y="863" class="small">Solid arrow = request flow or persistence flow</text>
+  <line class="dashed-arrow" x1="65" y1="898" x2="145" y2="898"/>
+  <text x="165" y="903" class="small">Dashed arrow = display dependency or exception support</text>
+  <ellipse cx="85" cy="928" rx="16" ry="6" fill="#8b5cf6" opacity="0.85"/>
+  <rect x="69" y="928" width="32" height="12" fill="#8b5cf6" opacity="0.85"/>
+  <ellipse cx="85" cy="940" rx="16" ry="6" fill="#7c3aed" opacity="0.95"/>
+  <text x="165" y="943" class="small">Cylinder icon = database</text>
+
+  <rect class="note-box" x="395" y="790" rx="14" ry="14" width="1145" height="150" filter="url(#shadow)"/>
+  <text x="425" y="825" fill="#111827" class="section-title">IMPORTANT NOTES</text>
+  <text x="430" y="855" class="body">1. Drive time is estimated in frontend JavaScript using an average speed of about 55 MPH.</text>
+  <text x="430" y="882" class="body">2. Fuel cost, total cost, budget difference, and under-budget status are calculated values.</text>
+  <text x="430" y="909" class="body">3. Hotel, activity, gas-station, reservation, payment, vendor, and admin data are simulated where applicable.</text>
+  <text x="430" y="936" class="body">4. Owner-email filtering is demonstration-level and is not secure server-side authorization.</text>
+  <text x="985" y="936" class="body">5. No timestamps are shown because Trip has no createdAt or updatedAt fields.</text>
+</svg>

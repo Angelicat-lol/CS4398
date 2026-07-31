@@ -36,8 +36,8 @@ Important test areas include:
 
 The final integrated project previously completed:
 
-- 24 tests
-- 24 passed
+- 29 tests
+- 29 passed
 - 0 failed
 
 A fresh agent must not assume this result without running the test suite.

@@ -38,3 +38,34 @@ MAIN FEATURES
 NOTES
 Some third-party booking, payment, vendor, hotel, gas, and activity features
 are simulated for demonstration purposes.
+
+IDE-INTEGRATED AI DEVELOPMENT EVIDENCE
+
+The final development, correction, and verification phase used GitHub Copilot
+Agent directly inside Visual Studio Code.
+
+Repository instructions:
+.github/copilot-instructions.md
+
+Reusable prompt files:
+.github/prompts/
+
+Project context files:
+ai-context/
+
+Exported Copilot sessions and screenshots:
+ai-evidence/
+
+Verified Copilot-assisted work included:
+- Identifying and correcting zero-distance and zero-budget validation
+- Adding regression tests for verified defects
+- Correcting Spring request-parameter binding using the Java -parameters option
+- Generating and revising the Trip lifecycle statechart
+- Correcting the as-built UML class diagram
+- Correcting the system-structure diagram
+- Running and analyzing all 29 automated tests
+- Verifying successful Spring Boot startup on port 8080
+
+The AI usage log distinguishes IDE-integrated Copilot work from earlier work
+completed using external conversational AI:
+ai-evidence/AI_USAGE_LOG.md
