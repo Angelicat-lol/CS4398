@@ -26,6 +26,15 @@ Evidence:
 
 - `ai-evidence/chat-exports/00-preliminary-mixed-session.json`
 
+DEMONSTRATION ACCOUNT NOTICE
+
+Any email addresses, usernames, or passwords displayed by the MyTrip interface
+are fictional demonstration values included solely for the academic prototype.
+
+They are not real user credentials, private secrets, API keys, or production
+authentication data. The current login and account-filtering behavior is not
+intended to provide secure authentication or authorization.
+
 ## Recorded Sessions
 
 | Date | Session | Purpose | Context Supplied | Result | Evidence |
@@ -197,3 +206,26 @@ Evidence:
 - `ai-evidence/chat-exports/06-system-structure-diagram-correction.json`
 - `ai-evidence/screenshots/06-system-structure-diagram-correction.jpg`
 - `uml/MyTrip_System_Structure_Diagram.svg`
+
+## Intermediate Final Readiness Audit
+
+After the documentation, prompt, and UML corrections began, GitHub Copilot
+Agent performed an intermediate final-readiness audit.
+
+The audit verified all 29 automated tests and successful application startup,
+but identified remaining evidence-filename, documentation-review, repository-
+cleanup, and packaging tasks. Those findings were retained so the remaining
+issues could be corrected before the final clean audit.
+
+Evidence:
+
+- `ai-evidence/chat-exports/04b-intermediate-final-audit.json`
+
+## Pre-Correction Final Audit
+
+An earlier final-submission audit was preserved before the prompt, UML,
+documentation, and evidence corrections were completed.
+
+Evidence:
+
+- `ai-evidence/chat-exports/04a-pre-correction-final-audit.json`
